@@ -17,7 +17,7 @@
                    '<img src="http://upload.wikimedia.org/wikipedia/commons/8/85/Tennis_pictogram.svg">' +
                    '<img src="http://upload.wikimedia.org/wikipedia/commons/1/13/Balles.JPG">' +
                    '<video controls>' +
-                   '<source src="img/mov_bbb.mp4" type="video/mp4">' +
+                   '<source src="../img/mov_bbb.mp4" type="video/mp4">' +
                    '</video>' +
                    '</div>'
     var csmePopup = L.popup().setContent(csmeHtml);

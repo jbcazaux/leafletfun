@@ -1,0 +1,23 @@
+#map {
+    width: 800px;
+    height: 600px
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: pink;
+}
+
+.popup-content .title{
+    font-weight: bold;
+}
+
+.popup-content img, .popup-content video{
+    width: 120px;
+    height: 80px;
+    margin-right: 3px;
+    border: 1px solid black;
+}
+
+.popup-content video{
+    width: 240px;
+}

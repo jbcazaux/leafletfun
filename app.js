@@ -1,7 +1,7 @@
 //imports
 var express = require('express');
 //running port
-var port = 8123;
+var port = 8080;
 
 
 //server

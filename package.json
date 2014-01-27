@@ -2,6 +2,7 @@
   "name": "leafletfun",
   "description": "some fun with leaflet",
   "version": "0.0.1",
+  "main": "app.js",
   "private": true,
   "dependencies": {
     "express": "3.0.6"

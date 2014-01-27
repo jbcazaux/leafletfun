@@ -9,7 +9,7 @@ var app = express();
 app.configure(function() {
     app.use(app.router);
     app.use('/', express.static(__dirname + "/web"));
-}).listen(process.env.VCAP_APP_PORT || port);
+}).listen(port);
 console.log("listening on " + port);
 
 app.get('/test', function(req, res){

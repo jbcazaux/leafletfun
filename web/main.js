@@ -1,5 +1,5 @@
 
-(function(){
+(function($){
 
     var map = L.map('map').setView([48.99921, 2.27550], 13);
 
@@ -9,21 +9,33 @@
     }).addTo(map);
 
 
+    $.get('/pois').done(addPoisToMap);
 
 
-    var csmeHtml = '<div class="popup-content">' +
-                   '<div class="title">CSM Eaubonne Tennis</div>' +
-                   '<div>Voici quelques photos !!</div>' +
-                   '<img src="http://upload.wikimedia.org/wikipedia/commons/8/85/Tennis_pictogram.svg">' +
-                   '<img src="http://upload.wikimedia.org/wikipedia/commons/1/13/Balles.JPG">' +
-                   '<video controls>' +
-                   '<source src="../img/mov_bbb.mp4" type="video/mp4">' +
-                   '</video>' +
-                   '</div>'
-    var csmePopup = L.popup().setContent(csmeHtml);
+    function addPoisToMap(pois){
 
-    L.marker([48.99921, 2.27550]).addTo(map)
-        .bindPopup(csmePopup).openPopup();
+        $.each(pois, function(){
+            var content = popupContent.replace("{name}", this.name)
+                .replace("{desc}", this.description)
+                .replace("{img1}", this.resources[0].url)
+                .replace("{img2}", this.resources[1].url)
+                .replace("{video}", this.resources[2].url);
+
+            var popup = L.popup().setContent(content);
+            L.marker([this.lat, this.lng]).addTo(map).bindPopup(popup);
+        });
+    }
+
+    var popupContent = '<div class="popup-content">' +
+        '<div class="title">{name}</div>' +
+        '<div>{desc}</div>' +
+        '<img src="{img1}">' +
+        '<img src="{img2}">' +
+        '<video controls>' +
+        '<source src="{video}" type="video/mp4">' +
+        '</video>' +
+        '</div>'
+
 
     /*var popup = L.popup();
     function onMapClick(e) {
@@ -36,4 +48,4 @@
     */
 
 
-})();
+})(jQuery);

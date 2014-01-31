@@ -1,19 +1,19 @@
 //imports
-var express = require('express');
+var express = require('express'),
+    MongoClient = require('mongodb').MongoClient
+    routes = require('./routes');
 //running port
 var port = 8080;
 
+MongoClient.connect('mongodb://localhost:27017/leafletfundb', function(err, db) {
 
-//server
-var app = express();
-app.configure(function() {
-    app.use(app.router);
+    var app = express();
     app.use('/', express.static(__dirname + "/web"));
-}).listen(port);
-console.log("listening on " + port);
+    routes(app, db);
+    app.listen(port);
 
-app.get('/test', function(req, res){
-    res.status(200).send("check index.html ");
+    console.log("listening on " + port);
 });
+
 
 
